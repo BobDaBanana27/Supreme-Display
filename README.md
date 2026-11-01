@@ -1,4 +1,4 @@
-# Supreme Display (EinkPad) 🖊️📄
+# Supreme Display (EinkPad) 
 
 An open-source, pocket-sized 5.83" DIY e-paper display with the tier 2 **$65 budget** (total cost: **$62.40**!).
 
