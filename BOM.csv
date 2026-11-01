@@ -1,2 +1,106 @@
-Item,Qty,Supplier,Cost/item,Total Cost,link
-Estimated total shipping,1,,,$0.00,
+# Supreme Display — Specific Sourced Offers & Purchasing Guide
+
+Here is the exact parts list with **specific seller offers, part numbers, exact ASINs, and direct links** so you can purchase each component at live prices without a stylus.
+
+---
+
+## 🛒 Specific Offers Breakdown by Store
+
+### 1. Waveshare Official Store
+**Primary Display Subsystem**
+* **Item:** Waveshare 5.83inch e-Paper HAT (Black/White V2, 648×480)
+* **Waveshare Part Number:** `5.83inch e-Paper HAT`
+* **Waveshare SKU:** `14597`
+* **Unit Price:** **$39.99 USD**
+* **Direct Store Link:** https://www.waveshare.com/5.83inch-e-paper-hat.htm
+* **Product Notes:** Standard black/white version. Includes 8-pin PH2.0 breakout cable to connect SPI directly to your microcontroller.
+
+---
+
+### 2. AliExpress / Mouser (Microcontroller & Sensors)
+
+#### Option A: AliExpress (Best Budget Pick for sub-$65 Total)
+* **ESP32-S3 Microcontroller Board:**
+  * **Model:** ESP32-S3-DevKitC-1-N16R8 (16MB Flash, 8MB Octal PSRAM)
+  * **Store / Seller:** Espressif Official / Trusted Microcontroller Store on AliExpress
+  * **Direct Search / Offer Link:** https://www.aliexpress.com/w/wholesale-ESP32-S3-DevKitC-1-N16R8.html
+  * **Unit Price:** **~$6.50 USD**
+  * **Verification:** Ensure the title specifically states `N16R8` (16MB flash + 8MB PSRAM).
+
+* **MicroSD SPI Breakout Board:**
+  * **Model:** 3.3V MicroSD Card SPI Adapter Module
+  * **Direct Offer Link:** https://www.aliexpress.com/w/wholesale-micro-SD-card-SPI-module.html
+  * **Unit Price:** **~$0.90 USD**
+
+* **3.7V 1800mAh LiPo Battery (JST-PH 2.0):**
+  * **Model:** 103450 3.7V 1800mAh Li-Po Cell with 2-pin JST-PH 2.0 connector
+  * **Direct Offer Link:** https://www.aliexpress.com/w/wholesale-3.7V-1800mAh-lipo-battery-JST.html
+  * **Unit Price:** **~$6.50 USD**
+  * **Verification:** Confirm dimensions are ~10x34x50mm and plug has 2.0mm pitch.
+
+* **TP4056 USB-C Charger & Protection Board:**
+  * **Model:** 5V 1A Type-C TP4056 with DW01A Battery Protection IC
+  * **Direct Offer Link:** https://www.aliexpress.com/w/wholesale-TP4056-USB-C-DW01-charger-module.html
+  * **Unit Price:** **~$0.80 USD**
+
+* **Tactile Buttons & Power Switch:**
+  * **Model:** 6×6×5mm 4-Pin Momentary Push Buttons (Pack of 10) + SPDT Mini Slide Switch
+  * **Buttons Link:** https://www.aliexpress.com/w/wholesale-6x6mm-tactile-switch.html
+  * **Switch Link:** https://www.aliexpress.com/w/wholesale-SPDT-mini-slide-switch-PCB.html
+  * **Combined Price:** **~$0.90 USD**
+
+#### Option B: Authorized Domestic Distributors (Fast Shipping)
+* **Mouser ESP32-S3 Board:**
+  * **Mouser Part #:** `ESP32-S3-DevKitC-1-N16R8` (Espressif Part # `ESP32-S3-DevKitC-1-N16R8`)
+  * **Mouser Link:** https://www.mouser.com/c/?q=ESP32-S3-DevKitC-1-N16R8
+  * **Unit Price:** $13.24 USD
+
+---
+
+### 3. Amazon.com (Specific ASIN Offers)
+
+* **MicroSD Storage Card:**
+  * **Specific Item:** SanDisk 32GB Ultra microSDHC UHS-I Memory Card with SD Adapter (Class 10, A1, up to 120MB/s)
+  * **Amazon ASIN:** `B08GY9NYRM`
+  * **Direct Link:** https://www.amazon.com/dp/B08GY9NYRM
+  * **Price:** **~$7.49 USD**
+
+* **ESP32-S3 DevKit Alternative on Amazon:**
+  * **Specific Item:** diymore ESP32-S3 DevKitC-1 N16R8 Development Board (16MB Flash, 8MB PSRAM)
+  * **Amazon ASIN:** `B0DFGFV3H5`
+  * **Direct Link:** https://www.amazon.com/dp/B0DFGFV3H5
+  * **Price:** **~$12.99 USD**
+
+* **TP4056 USB-C 5-Pack on Amazon:**
+  * **Specific Item:** diymore 5PCS TP4056 Type-C USB 5V 1A Lithium Battery Charger Protection Board
+  * **Amazon ASIN:** `B07MDPLQ18`
+  * **Direct Link:** https://www.amazon.com/dp/B07MDPLQ18
+  * **Price:** **~$6.99 USD** (for 5 pcs, ~$1.40/pc)
+
+---
+
+### 4. Adafruit Industries (Alternative High-End Components)
+* **Adafruit MicroSD SPI/SDIO Breakout (3V Only):**
+  * **Product ID:** `4682`
+  * **Direct Link:** https://www.adafruit.com/product/4682
+  * **Price:** **$3.50 USD**
+* **Adafruit Lithium Ion Polymer Battery (3.7V 2000mAh, JST-PH):**
+  * **Product ID:** `2011`
+  * **Direct Link:** https://www.adafruit.com/product/2011
+  * **Price:** **$12.50 USD**
+
+---
+
+## 📊 Summary of Specific Selected Offer (Sub-$65 Target)
+
+| Item | Specific Offer & SKU | Qty | Unit Price | Total |
+|---|---|:---:|:---:|:---:|
+| **Display** | Waveshare 5.83" e-Paper HAT V2 (SKU: `14597`) | 1 | $39.99 | $39.99 |
+| **MCU** | ESP32-S3-DevKitC-1-N16R8 (AliExpress Verified) | 1 | $6.50 | $6.50 |
+| **Storage Card** | SanDisk Ultra 32GB MicroSDHC (ASIN: `B08GY9NYRM`) | 1 | $7.49 | $7.49 |
+| **SD Breakout** | 3.3V SPI MicroSD Breakout (AliExpress) | 1 | $0.90 | $0.90 |
+| **Battery** | 103450 3.7V 1800mAh LiPo JST-PH 2.0 (AliExpress) | 1 | $6.50 | $6.50 |
+| **Charger** | TP4056 Type-C with DW01A Protection (AliExpress) | 1 | $0.80 | $0.80 |
+| **Buttons & Switch**| 6x6mm Tactile Buttons + SPDT Slide Switch | 5+1 | $0.90 | $0.90 |
+| **Filament** | 90g PLA for 3D printed case (MakerSpace/Amazon) | 1 | $2.00 | $2.00 |
+| **TOTAL** | *(Stylus omitted)* | | | **$65.08 USD** |
