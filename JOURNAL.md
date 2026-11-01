@@ -6,7 +6,7 @@
 > [!NOTE]
 > This devlog is mirrored from [Half Life](https://halflife.hackclub.com) ([open the project](https://halflife.hackclub.com/projects/jbi6ijl3wt81i0z3qcm3l78o)). Editing it here will not change the platform's copy, and the next sync overwrites this file.
 
-> An e-paper device that you can keep daily tasks, reminders, or a calendar, etc., on.
+> An e-paper device that you can keep daily tasks, reminders, or a calendar, etc., on. Made with an ESP-32 board and a 5.83" E-Ink screen.
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
