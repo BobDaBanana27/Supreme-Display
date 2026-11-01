@@ -1,93 +1,96 @@
-# Supreme Display (EinkPad) - DIY 5.83" E-Paper Writer & Tablet
+# Supreme Display (EinkPad) 🖊️📄
 
-Supreme Display is an open-source 5.83" DIY e-paper writing tablet and distraction-free digital notebook engineered around paper-like visual comfort, ultra-long battery endurance, and an accessible sub-$65 budget ($62.40 total). Designed for the Hack Club Half Life 2 grant program, it delivers an open hardware and software platform for notes, drafting, and sketches without notification distractions or blue light eye fatigue.
+An open-source, pocket-sized 5.83" DIY e-paper writing tablet and distraction-free notebook built for **Hack Club Half Life 2** — engineered from scratch to come in under a strict **$65 budget** (total cost: **$62.40**!).
 
----
-
-## Hardware Architecture & Visual Overview
-
-### 1. System Interconnect Architecture
-![System Bus & Interconnect Architecture](docs/images/architecture.svg)
-
-The hardware revolves around an **ESP32-S3-WROOM-1** microcontroller (dual-core Xtensa LX7 @ 240 MHz with 8 MB Octal PSRAM and 16 MB flash) interfacing with:
-- **Display:** 5.83-inch Waveshare E-Paper display (648 × 480 pixels, UC8179 controller) driven over a dedicated 4-wire SPI bus supporting partial fast refresh (~0.3s) for responsive drafting.
-- **Input:** Ultra-thin 4-wire digitizer overlay with an XPT2046 SPI controller and fine-tip stylus, with support for an alternate I2C QWERTY keyboard (e.g. CardKB / BB Q20) in typewriter mode.
-- **Storage:** MicroSD SPI socket running FAT32 for local binary stroke (`.epg`) and plain-text file storage.
-- **Power Management:** 1S 3.7V 1800 mAh LiPo battery, TP4056 USB-C charging with DW01A protection, and low-quiescent LDO regulator.
-
-### 2. Electrical Schematic & Power Distribution
-![System Schematic Diagram](docs/images/schematic.svg)
-
-### 3. Mechanical Enclosure & Layer Stackup
-![Mechanical Enclosure Cross-Section](docs/images/enclosure.svg)
-
-The custom 3-piece snap-fit enclosure features an integrated stylus silo, recessed display bezel to protect the panel edges, and internal mounting bosses tailored for standard FDM 3D printing (PLA/PETG, ~90g material).
+Tired of backlit screens, pop-up notifications, and battery anxiety while trying to take notes or brainstorm? Supreme Display gives you the feel of actual pen and paper with the perks of a modern digital workflow: instant partial screen updates, weeks of battery life, automatic saving to MicroSD, and wireless file syncing straight to your phone or laptop.
 
 ---
 
-## How It Works
+## What It Looks Like & How It's Laid Out
 
-1. **Dual-Core Input & Refresh Pipeline:**
-   - **Core 0 (Input Task):** Dedicated 200 Hz polling of pen coordinates, pressure levels, and hardware tactile keys via FreeRTOS queues.
-   - **Core 1 (Rasterizer & Refresh):** Renders strokes into a 38.8 KB 1bpp framebuffer using a Bresenham algorithm with variable brush sizes and issues windowed partial updates to the UC8179 controller.
-2. **Persistence Engine:**
-   - An asynchronous FreeRTOS storage task serializes vector strokes and notes into `.epg` files on the FAT32 MicroSD card every 30 seconds, eliminating risk of data loss.
-3. **Wireless Sync & Web Viewer:**
-   - Onboard Wi-Fi hosts a local HTTP server allowing you to browse, view, and export notebooks as standard SVG vectors or PNG bitmaps directly to your phone or computer.
-4. **Power Autonomy:**
-   - In active drafting mode, consumption averages ~38 mA (~45 hours of writing time). When idle, the device transitions to deep sleep (<35 µA quiescent draw), while the bistable e-paper retains the last screen image indefinitely with 0W power.
+### 1. How the Parts Talk to Each Other
+![System Architecture Diagram](docs/images/architecture.svg)
+
+At the heart of the build is an **ESP32-S3** board (dual-core 240 MHz, 8 MB extra PSRAM, and 16 MB flash) driving three main subsystems:
+- **5.83" Waveshare E-Paper Display:** Crisp 648 × 480 black-and-white screen with fast partial refreshes (~0.3s) so drawing and typing don't feel sluggish.
+- **Touch / Input Layer:** A transparent 4-wire resistive overlay that tracks any fine-tip stylus with zero fuss (or swap in a mini I2C keyboard like the CardKB if you'd rather type like an old-school typewriter!).
+- **Storage & Power:** An SD card slot for saving your notes, a rechargeable 1800 mAh LiPo battery, and a standard USB-C port for charging.
+
+### 2. Wiring & Schematic
+![Schematic Diagram](docs/images/schematic.svg)
+
+Clean 3.3V power routing, battery protection via TP4056 + DW01A, and dedicated high-speed SPI pins for the display and digitizer.
+
+### 3. Case & Assembly Stackup
+![Enclosure Diagram](docs/images/enclosure.svg)
+
+A clean, 3-piece 3D-printable snap-fit enclosure designed to protect the glass display edges, house the battery safely, and store the stylus right in the side bezel. Prints easily on any standard hobby 3D printer using about 90 grams of PLA or PETG.
 
 ---
 
-## Key Technical Specifications
+## How It Actually Works Under the Hood
 
-| Parameter | Specification |
+Writing on e-paper is notorious for being laggy, but here's how we made it snappy on cheap hardware:
+
+1. **Splitting the Work Across Two Cores:**  
+   The ESP32-S3 has two CPU cores. Core 0 focuses 100% on listening for pen touches (polling at 200 Hz so every flick of the pen is captured). Core 1 takes those pen coordinates, turns them into smooth lines using a custom Bresenham algorithm, and immediately flashes just the changed box on the screen via the UC8179's partial refresh mode.
+2. **Never Losing Your Work:**  
+   Every stroke and page is serialized in the background into lightweight `.epg` binary files and written to the FAT32 MicroSD card every 30 seconds. Even if the battery dies mid-sentence, your notes are safe.
+3. **Grab Your Notes Over Wi-Fi:**  
+   Flip on sync mode and the device fires up a lightweight web server. Open your phone or laptop browser, view your notebook pages, and download them cleanly as vector SVGs or images.
+4. **Insane Battery Life:**  
+   Because e-ink doesn't need any power to keep an image on screen, the display draws 0 Watts when you're just reading. When writing actively, the whole board pulls around 38 mA (~45+ hours of nonstop drawing), and in deep sleep between sessions it sips under 35 µA — easily lasting weeks on a single charge.
+
+---
+
+## Specs at a Glance
+
+| Feature | Details |
 |---|---|
-| **Display Panel** | 5.83" diagonal E-Paper Display (Waveshare V2 HAT) |
-| **Resolution** | 648 × 480 pixels (138 DPI, monochrome black/white) |
-| **Controller** | UC8179 (4-Wire SPI @ 10 MHz) with partial windowed refresh (~0.3s) |
-| **Microcontroller** | ESP32-S3-WROOM-1 (Dual-Core 240 MHz, 512KB SRAM, 8MB PSRAM, 16MB Flash) |
-| **Input Subsystem** | 4-wire resistive digitizer overlay + fine-point stylus (or I2C CardKB keyboard) |
-| **Local Storage** | MicroSD FAT32 slot + 16MB onboard SPI flash |
-| **Battery & Charging** | 1800 mAh 3.7V LiPo, TP4056 USB-C charger, >45 hours active / 3+ weeks standby |
-| **Wireless** | 2.4 GHz Wi-Fi 802.11 b/g/n, BLE 5.0, local HTTP sync server |
-| **BOM Cost** | **$62.40 USD** (Target: < $65.00 USD) |
+| **Screen** | 5.83-inch Black & White E-Paper (Waveshare V2 HAT) |
+| **Resolution** | 648 × 480 pixels (138 DPI, crisp paper-like finish) |
+| **Refresh Speed** | ~0.3s partial refresh for smooth writing; ~3.5s full clear |
+| **Brain / MCU** | ESP32-S3-DevKitC-1 (Dual-Core @ 240 MHz, 8MB PSRAM, 16MB Flash) |
+| **Input Options** | 4-wire digitizer overlay + fine stylus (or mini QWERTY keyboard) |
+| **Storage** | MicroSD card slot (FAT32) + onboard flash cache |
+| **Battery & Charging** | 1800 mAh LiPo battery, USB-C charging, 45+ hrs active / weeks standby |
+| **Connectivity** | 2.4 GHz Wi-Fi, Bluetooth LE, USB-C Serial & Mass Storage |
+| **Total Build Cost** | **$62.40 USD** (Comfortably under the $65 goal!) |
 
 ---
 
-## Repository Structure & 20-Hour Progression
+## How the Project Was Built (20-Hour Progress)
 
-This project is built and documented through 20 discrete hourly milestones:
+We broke down the entire build into 20 bite-sized hourly chunks so every single step is transparent and documented:
 
-- [20-Hour Progression Log (PROGRESSION.md)](PROGRESSION.md): Hourly development diary and deliverables breakdown.
-- [Master Project Index (INDEX.md)](INDEX.md): Index of design documents, diagrams, and firmware stages.
-- [Root Firmware Directory (firmware/)](firmware/): Complete dual-core ESP32-S3 FreeRTOS firmware and PlatformIO project.
-- [Standalone Arduino Sketch (supreme_display.ino)](supreme_display.ino): Single-sketch Arduino IDE build.
-- [Chunk 01: Project Foundation](CHUNK_01/README.md) - [BOM.md](CHUNK_01/BOM.md) ($62.40 budget) | [RESEARCH.md](CHUNK_01/RESEARCH.md) | [REQUIREMENTS.md](CHUNK_01/REQUIREMENTS.md)
-- [Chunk 02: System Architecture](CHUNK_02/README.md)
-- [Chunk 03: Electrical Design & Power Tree](CHUNK_03/README.md)
-- [Chunk 04: GPIO Pin Allocation & Pinmap](CHUNK_04/PINMAP.md)
-- [Chunk 07: Mechanical CAD & Enclosure](CHUNK_07/MECHANICAL.md)
-- [Chunk 14–20: Incremental Firmware Implementation](CHUNK_20/README.md)
+- [Check out our 20-Hour Build Log (PROGRESSION.md)](PROGRESSION.md) for the hour-by-hour diary.
+- [Full Project Index (INDEX.md)](INDEX.md) for quick links to every design file.
+- [Hour 01 Foundation (CHUNK_01/)](CHUNK_01/README.md): [Complete BOM ($62.40)](CHUNK_01/BOM.md), [Hardware Trade Study](CHUNK_01/RESEARCH.md), and [Requirements](CHUNK_01/REQUIREMENTS.md).
+- [Hours 02–13](INDEX.md): System architecture, schematics, pin maps, mechanical CAD, battery tests, and the physical assembly guide.
+- [Hours 14–20](CHUNK_20/README.md): Incremental firmware development, from FreeRTOS tasks to the display driver, touch calibration, and the web sync server.
 
 ---
 
-## Quick Start & Firmware Flashing
+## Flashing the Code
 
-### Option A: Using PlatformIO (VS Code)
-```bash
-# Navigate to firmware directory
-cd firmware
+All the code is ready to compile and flash onto an ESP32-S3 board.
 
-# Build and flash to ESP32-S3
-pio run --target upload
+### Using PlatformIO (Recommended)
+1. Clone the repo and open the [`firmware/`](firmware/) folder in VS Code with the PlatformIO extension installed.
+2. Plug in your ESP32-S3 via USB-C.
+3. Hit upload:
+   ```bash
+   pio run --target upload
+   ```
+4. Check the diagnostic logs:
+   ```bash
+   pio device monitor -b 115200
+   ```
 
-# Open serial diagnostic monitor
-pio device monitor -b 115200
-```
+### Using Arduino IDE
+1. Open [`supreme_display.ino`](supreme_display.ino) in the Arduino IDE.
+2. In **Tools > Board**, pick **ESP32S3 Dev Module**.
+3. Under **Tools**, make sure **PSRAM: OPI PSRAM** is enabled and **Flash Size** is set to **16MB**.
+4. Plug in your board and click **Upload**.
 
-### Option B: Using Arduino IDE
-1. Open the [supreme_display.ino](supreme_display.ino) sketch in the Arduino IDE.
-2. Select **ESP32S3 Dev Module** under **Tools > Board > ESP32 Arduino**.
-3. Enable **PSRAM: OPI PSRAM** and set **Flash Size: 16MB**.
-4. Connect the USB-C cable and click **Upload**.
+Have fun hacking! 🚀
