@@ -1,10 +1,3 @@
-PART,WHAT IT'S FOR,QTY,UNIT $,VENDOR,LINK
-5.83" E-Paper Display HAT V2,Main monochrome e-paper screen and SPI driver HAT,1,39.99,Waveshare,https://www.waveshare.com/5.83inch-e-paper-hat.htm
-ESP32-S3-DevKitC-1-N16R8,Main microcontroller handling FreeRTOS tasks and Wi-Fi,1,6.50,AliExpress,https://www.aliexpress.com/w/wholesale-ESP32-S3-DevKitC-1-N16R8.html
-MicroSD Card SPI Adapter Module,Breakout to connect MicroSD card over SPI bus,1,0.90,AliExpress,https://www.aliexpress.com/w/wholesale-micro-SD-card-SPI-module.html
-SanDisk 32GB Ultra MicroSDHC Card,Storage for notes and binary vector pages,1,7.49,Amazon,https://www.amazon.com/dp/B08GY9NYRM
-1S 3.7V 1800mAh LiPo Battery (JST-PH 2.0),Rechargeable power source for portable operation,1,6.50,AliExpress,https://www.aliexpress.com/w/wholesale-3.7V-1800mAh-lipo-battery-JST.html
-TP4056 USB-C Charger Board with DW01A Protection,USB-C battery charging and over-discharge protection,1,0.80,AliExpress,https://www.aliexpress.com/w/wholesale-TP4056-USB-C-DW01-charger-module.html
-6x6mm Tactile Push Buttons,Page turn and menu navigation hardware buttons,5,0.10,AliExpress,https://www.aliexpress.com/w/wholesale-6x6mm-tactile-switch.html
-SPDT Mini Slide Power Switch,Hardware power cut-off switch,1,0.40,AliExpress,https://www.aliexpress.com/w/wholesale-SPDT-mini-slide-switch-PCB.html
-3D Printing Filament (PLA ~90g) & Hookup Wires,Chassis housing and internal power wiring,1,2.00,Amazon,https://www.amazon.com/s?k=Hatchbox+PLA+1.75mm+1kg
+Item,Qty,Supplier,Cost/item,Total Cost,link
+"5.83 E-Paper Display HAT V2,Main monochrome e-paper screen and SPI driver HAT,1,39.99,Waveshare,https://www.waveshare.co",1,,$0.00,$0.00,
+Estimated total shipping,1,,,$0.00,
