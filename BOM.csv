@@ -1,10 +1,3 @@
-Part Name,Quantity,Price,Supplier / Link
-5.83" E-Paper Display HAT V2,1,39.99,https://www.waveshare.com/5.83inch-e-paper-hat.htm
-ESP32-S3-DevKitC-1-N16R8,1,6.50,https://www.aliexpress.com/w/wholesale-ESP32-S3-DevKitC-1-N16R8.html
-MicroSD Card SPI Adapter Module,1,0.90,https://www.aliexpress.com/w/wholesale-micro-SD-card-SPI-module.html
-SanDisk 32GB Ultra MicroSDHC Card,1,7.49,https://www.amazon.com/dp/B08GY9NYRM
-1S 3.7V 1800mAh LiPo Battery (JST-PH 2.0),1,6.50,https://www.aliexpress.com/w/wholesale-3.7V-1800mAh-lipo-battery-JST.html
-TP4056 USB-C Charger Board with DW01A Protection,1,0.80,https://www.aliexpress.com/w/wholesale-TP4056-USB-C-DW01-charger-module.html
-6x6mm Tactile Push Buttons,5,0.50,https://www.aliexpress.com/w/wholesale-6x6mm-tactile-switch.html
-SPDT Mini Slide Power Switch,1,0.40,https://www.aliexpress.com/w/wholesale-SPDT-mini-slide-switch-PCB.html
-3D Printing Filament (PLA/PETG ~90g) & Hookup Wires,1,2.00,https://www.amazon.com/s?k=Hatchbox+PLA+1.75mm+1kg
+Item,Qty,Supplier,Cost/item,Total Cost,link
+"5.83 E-Paper Display HAT V2,1,39.99,https://www.waveshare.com/5.83inch-e-paper-hat.htm ESP32-S3-DevKitC-1-N16R8,1,6.50,h",1,,$0.00,$0.00,
+Estimated total shipping,1,,,$0.00,
